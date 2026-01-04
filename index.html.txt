@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhaiyu</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body {
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+h2 { font-size: 1.4rem; margin-bottom: 20px; color: #555; }
+p { font-size: 1rem; line-height: 1.7; margin: 20px 0; }
+.highlight { color: #ff6f61; font-weight: 600; }
+.music { margin-top: 25px; }
+.music p { font-size: 0.9rem; margin-bottom: 8px; color: #666; }
+audio { width: 100%; outline: none; }
+.btn { display: inline-block; margin-top: 25px; padding: 12px 28px; background: #ff6f61; color: #fff; text-decoration: none; border-radius: 30px; font-weight: 500; transition: 0.3s ease; }
+.btn:hover { background: #e85b50; transform: scale(1.05); }
+footer { margin-top: 30px; font-size: 0.85rem; color: #777; }
+
+/* Floating hearts/confetti */
+.heart {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: floatUp linear infinite;
+  z-index: 0;
+}
+.heart:before, .heart:after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: inherit;
+  border-radius: 50%;
+}
+.heart:before { top: -7.5px; left: 0; }
+.heart:after { left: 7.5px; top: 0; }
+@keyframes floatUp {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body onclick="tryPlaySong()">
+
+<div class="card">
+  <h1>Happy Birthday 🎂</h1>
+  <h2>To the best brother ever 💙</h2>
+
+  <p>
+    <span class="highlight">Happy Birthday Bhaiyu🫀🥹</span> — my biggest supporter, my guide, and my strongest pillar.<br><br>
+    If you hadn’t been there for me, honestly, I don’t know where I would be or what I would have been doing today. Life would have felt so much harder without you by my side. You’ve always been someone I can rely on, someone who silently lifts me up, and someone who makes even the toughest days feel manageable.<br><br>
+    I cherish all the memories we’ve shared together — every silly game we played, even when I was terrible at badminton and you still played with me patiently. I remember your little lessons, your advice, your “activa” lessons, and yes — all those tapli, punches on my back you gave me when I messed up. I cherish everything, the small fights, the laughter, the teasing, the nagging, and even the serious talks.<br><br>
+    I also cherish the adventures we’ve had together — going to the pahad, enjoying the view, feeling free, and just laughing at nothing and everything at the same time. Those moments remind me how lucky I am to have you, not just as a brother, but as a friend, a guide, and a constant presence in my life.<br><br>
+    I may not always show it, and I may not say it enough, but I love you more than words can ever express. My respect, gratitude, and admiration for you run so deep. You’ve shaped so much of who I am, and I’ll always be thankful for you. Having you is one of the greatest blessings of my life.<br><br>
+    I hope this year brings you everything you deserve — happiness, peace, success, laughter, adventures, and all the little joys that make life so beautiful. May every day bring you something to smile about, and may you always know how much you are loved, cherished, and appreciated.<br><br>
+    <strong>Happy Birthday, Bhaiyu.</strong> I love you — more than I can ever say, always. 🤍✨
+  </p>
+
+  <p>
+    <span class="highlight">From Maa and Papa:</span><br>
+    Bhaiyu, we are so proud of the person you have become. Your kindness, responsibility, and the way you care for your family make our hearts full. You truly are our bestest son, and seeing you grow into someone so strong, thoughtful, and loving gives us more happiness than words can express. Always know that we love you deeply, and we are grateful every day to have you as our son. Keep shining, keep smiling, and keep being the amazing person you are.
+  </p>
+
+  <p class="highlight">Keep smiling. Keep shining. Keep being you.</p>
+
+  <div class="music">
+    <p>🎶 Playing: <em>Tenu Sang Rakhna</em> — Jigra</p>
+    <audio id="birthdayAudio" controls autoplay loop>
+      <source src="tenu-sang-rakhna-jigra.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <a href="#" class="btn">With Love 💖</a>
+  <footer>Made with love by your sibling 💫</footer>
+</div>
+
+<script>
+// Try autoplay on click
+const audio = document.getElementById('birthdayAudio');
+function tryPlaySong() {
+  audio.play().catch(e => console.log('Autoplay blocked, click to start'));
+}
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.width = 10 + Math.random() * 20 + 'px';
+  heart.style.height = heart.style.width;
+  heart.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+  heart.style.animationDuration = 4 + Math.random() * 6 + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 10000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
